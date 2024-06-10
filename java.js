@@ -1,8 +1,9 @@
     let operator=''
-    let elementPrim=''
-    let elementSecund=''
-    let emptyDiv=''
-    let checkNumPrim=true
+    let a=''
+    let b=''
+    let checkFirst=true
+    let result=0
+
     const corpCalculator=document.querySelector('.butoane')
 
     const butttons = '789%456*123-0.+='
@@ -10,57 +11,6 @@
     const operators = ['+', '-', '*', '/', '%'];
 
     const numbers=['0','1','2','3','4','5','6','7','8','9']
-
-    function checkOperators(str)
-    {
-        for(let i=0;i<str.length;i++)
-            {
-                if(operators.includes(str[i]))
-                    {
-                        console.log(str[i])
-                        return true
-                    }
-            }
-    }
-
-    function removeResult()
-    {
-        return displayShow.textContent=null
-    }
-
-    function rezultat(rez)
-    {
-        rez=parseFloat(rez)
-        return rez
-    }
-
-    function findTheComma(rez)
-    {
-        let index=0
-        let countdown=0
-        let lungime=rez.toString()
-        let caracterCautat=lungime.split('')
-        for(let i=0;i<caracterCautat.length-1;i++)
-            {
-                if(rez[i]===',')
-                   { index=i
-                    break
-                   }
-            }
-        if(index===0)
-            return true
-
-        for(let i=caracterCautat-1;i>index;i--)
-            {
-                if(charAt(caracterCautat.length-1)==='0')
-                   { rez.pop()
-                    countdown++
-                   }
-                   else
-                   {break}
-            }
-        return countdown
-    }
 
     for(let numberOFKeys=0;numberOFKeys<butttons.length;numberOFKeys++)
         {
@@ -92,66 +42,63 @@
     {
         return a%b
     }
+    
+   const displayShow=document.querySelector('.display')
 
-        const displayShow=document.querySelector('.display')
+   corpCalculator.addEventListener('click',(event)=>
+{
+    let alegeButon=event.target.name
 
-
-      
-        corpCalculator.addEventListener('click',(event)=>
+   if(numbers.includes(alegeButon)||alegeButon.includes('.'))
+    {
+        if(checkFirst)
+            {
+                a+=alegeButon
+                displayShow.textContent=a
+            }
+        else
         {
-            let value=event.target.name
-            let result=0
+            b+=alegeButon
+            displayShow.textContent=b
+        }
+    }
+    else if(operators.includes(alegeButon))
+        {
+            checkFirst=false
+            operator=alegeButon
+        }
+
+    else if(alegeButon==='=')
+        {
         
-                if(checkNumPrim)
-                {
-                    if(!checkOperators(value))
-                        {
-                            elementPrim+=value
-                            displayShow.textContent=elementPrim
-                        }
-                    else
-                    {
-                        checkNumPrim=false
-                        operator+=value
-               
-                    }
-                }
-                else
-                {
-                    elementSecund+=value
-                    displayShow.textContent=elementSecund
-                }
+        result=parseFloat(result)
+        let elUnu=parseFloat(a)
+        let elDoi=parseFloat(b)
+        switch(operator)
+         {
+        case '+':
+            result=add(elUnu,elDoi)
+        break
 
-                if(value==='=')
-                {
-                    let result=parseFloat(rezultat)
-                    let elementUnu=parseFloat(elementPrim)
-                    let elementDoi=parseFloat(elementSecund)
+        case '-':
+            result=substract(elUnu,elDoi)
+        break
 
-                    switch(operator)
-                    {
-                        case '+':
-                            result=add(elementUnu,elementDoi)
-                        break
+        case '*':
+            result=multiply(elUnu,elDoi)
+        break
 
-                        case '-':
-                            result=substract(elementUnu,elementDoi)
-                        break
+        case '%':
+            result=procent(elUnu,elDoi)
+        break
+         }
+         displayShow.textContent=result
+         a=result
+         b=''
+         result=''
+        }   
 
-                        case '*':
-                            result=multiply(elementUnu,elementDoi)
-                        break
-
-                        case '%':
-                            result=procent(elementUnu,elementDoi)
-                        break
-                    }
-                    if(Math.floor(result)===result)
-                        displayShow.textContent=result
-                    else
-                        displayShow.textContent=result.toFixed(findTheComma(result))
-                }
-        
-                
-        })
+    
+    
+})
         
