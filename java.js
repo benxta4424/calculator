@@ -20,9 +20,7 @@
             addKeys.textContent=butttons[numberOFKeys]
             corpCalculator.appendChild(addKeys)
         }
-
-
-    
+   
     function add(a,b)
     {
         return a+b
@@ -92,13 +90,35 @@
             result=procent(elUnu,elDoi)
         break
          }
-         displayShow.textContent=result
+         if(result>99999999)
+            displayShow.textContent='A bit too much there'
+        else
+         {displayShow.textContent=result
          a=result
          b=''
-         result=''
-        }   
-
-    
-    
+         result=''}
+        }      
 })
+
+    function clearDisplay()
+    {
+        displayShow.textContent=''
+        operator=''
+        a=''
+        b=''
+        result=''
+        checkFirst=true
         
+    }
+    
+    const corpulDoi=document.querySelector('.corpulDoi')  
+    const addClear=document.createElement('button') 
+    addClear.classList.add('clearBtn') 
+    addClear.textContent='CLEAR'
+    corpulDoi.appendChild(addClear)
+
+    addClear.addEventListener('click',()=>
+    {
+        clearDisplay()
+    })
+

@@ -1,17 +1,61 @@
+.twoSides
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.latch
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 60px;
+}
+.latchUp,.latchDown{
+    height: 10px;
+    width: 4px;
+    background-color: black;
+    border-radius: 150px;
 
+}
+.latchMiddle
+{
+    height: 300px;
+    width: 4px;
+    background-color: black;
+    border-radius: 32px;
+    
+   
+}
+.corpulDoi
+{
+    display: flex;
+    padding: 2px;
+    border-left: 7px solid #3187A2;
+    border-top: 7px solid #3187A2;
+    border-bottom: 7px solid #3187A2;
+    border-right: 1px solid blue;
+    height: 400px;
+    width: 280px;
+    border-radius: 20px;
+    background-color: lightblue;
+
+    margin-top: 60px;
+    flex-direction: column;
+}
 #corpulCalculatorului
 {
     display: flex;
     flex-wrap: wrap;
     padding: 2px;
-    border: 7px solid #3187A2;
+    border-right: 7px solid #3187A2;
+    border-top: 7px solid #3187A2;
+    border-bottom: 7px solid #3187A2;
+    border-left: 1px solid blue;
     height: 400px;
     width: 280px;
     border-radius: 20px;
-    background-color: lightblue;
-    
-    margin-left: auto;
-    margin-right: auto;
+    background-color: lightblue;  
     margin-top: 60px;
 
 }
@@ -23,12 +67,14 @@
     height: 70px;
     width: 400px;
     background-color: white;
-    border-radius: 25px;
+    border-radius: 15px;
 
     display: flex;
     justify-content: end;
-    flex: auto;
+    flex: 1;
     
+    overflow: auto;
+    white-space: nowrap;
     
 
 }
@@ -55,4 +101,15 @@
     display:inline-block;
     width: 67px;
     filter:drop-shadow(10px);
+}
+.clearBtn
+{
+    border-radius: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    width: 52px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
