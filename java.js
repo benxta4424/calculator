@@ -114,7 +114,7 @@
     const corpulDoi=document.querySelector('.corpulDoi')  
     const addClear=document.createElement('button') 
     addClear.classList.add('clearBtn') 
-    addClear.textContent='CLEAR'
+    addClear.textContent='C'
     corpulDoi.appendChild(addClear)
 
     addClear.addEventListener('click',()=>
